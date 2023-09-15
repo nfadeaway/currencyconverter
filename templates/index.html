@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main">
+        <div class="main__title">Хочу обменять</div>
+        <form class="converter">
+            <input type="text" class="amount" size="7" required>
+            <select class="converter__from">
+                <option value="RUB">RUB</option>
+                {% for currency in currencies %}
+                <option value="{{ currency }}">{{ currency }}</option>
+                {% endfor %}
+            </select>
+            <span class="converter__text">на</span>
+            <select class="converter__to">
+                <option value="RUB">RUB</option>
+                {% for currency in currencies %}
+                <option value="{{ currency }}">{{ currency }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Отправить" />
+	    </form>
+        <div class="main__result"></div>
+    </div>
+    <script src="{{ url_for('static', filename='js/calculate.js') }}"></script>
+</body>
+</html>

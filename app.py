@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, render_template, jsonify, request, make_response
 import requests
 
 app = Flask(__name__)
@@ -19,16 +19,27 @@ def index():
 @app.route('/api/rates', methods=['GET'])
 def get_rates():
     currencies = get_currencies('https://www.cbr-xml-daily.ru/daily_json.js')
-    first_cur = request.args.get('from')
-    second_cur = request.args.get('to')
+    currencies['Valute']['RUB'] = 'base'
+    first_cur = request.args.get('from').upper()
+    second_cur = request.args.get('to').upper()
+
+    if first_cur not in currencies['Valute'] or second_cur not in currencies['Valute']:
+        return make_response(
+            jsonify(
+                {
+                    'error': 'unknown currency'
+                }
+            ), 404
+        )
+
     value = int(request.args.get('value'))
-    if first_cur == 'RUB' and second_cur == 'RUB':
+    if first_cur.upper() == 'RUB' and second_cur.upper() == 'RUB':
         return jsonify(
             {
                 'result': value
             }
         )
-    elif first_cur == 'RUB':
+    elif first_cur.upper() == 'RUB':
         return jsonify(
             {
                 'result': round(
@@ -37,7 +48,7 @@ def get_rates():
                 )
             }
         )
-    elif second_cur == 'RUB':
+    elif second_cur.upper() == 'RUB':
         return jsonify(
             {
                 'result': round(

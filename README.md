@@ -11,7 +11,7 @@
 
 Бэкенд: python 3.10 + flask 2.3.3. Фронтенд: html, css, js.
 ## API
-`GET http://127.0.0.1:5000/api/rates?from=<currency1>&to=<currency2>&value=<value>`
+`GET /api/rates?from=<currency1>&to=<currency2>&value=<value>`
 
 - `<currency1>` - базовая валюта,
 - `<currency2>` - валюта, в которую конвертируем,

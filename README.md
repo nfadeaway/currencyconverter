@@ -3,8 +3,6 @@
 ![Static Badge](https://img.shields.io/badge/flask%20-%20black?logo=Flask&logoColor=%#000000)
 ![Static Badge](https://img.shields.io/badge/docker%20-%20black?logo=Docker&logoColor=%#2496ED)
 ![Static Badge](https://img.shields.io/badge/javascript%20-%20black?logo=javascript)
-![Static Badge](https://img.shields.io/badge/html5%20-%20%23000000?logo=HTML5)
-![Static Badge](https://img.shields.io/badge/css3%20-%20%23000000?logo=CSS3&logoColor=%231572B6)
 
 
 Простой API сервис "Конвертер валют".
